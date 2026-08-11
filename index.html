@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Management Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>StoreAdmin</h2>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="#" class="menu-item active " id="dashboard-menu">
+                    <span>🏠</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="menu-item" id="products-menu">
+                    <span>📦</span>
+                    <span>Products</span>
+                </a>
+
+
+                <a href="#" id="reports-menu" class="menu-item">
+                    <span>📊</span>
+                    <span>Reports</span>
+                </a>
+
+                <a href="#" id="settings-menu" class="menu-item">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Dashboard Page -->
+            <section id="dashboard-page">
+                <!-- Header -->
+                <header class="header">
+
+                    <div class="header-title">
+                        <h1>Product Dashboard</h1>
+                        <p>Manage your store inventory efficiently</p>
+                    </div>
+
+                    <div class="admin-profile">
+                        <span>👤</span>
+                        <span>Admin</span>
+                    </div>
+
+                </header>
+
+                <!-- Dashboard Cards -->
+                <section class="dashboard-cards">
+
+                    <div class="card">
+                        <h3>Total Products</h3>
+                        <h2 id="total-products">0</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Categories</h3>
+                        <h2 id="total-categories">0</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>In Stock</h3>
+                        <h2 id="in-stock">0</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Out of Stock</h3>
+                        <h2 id="out-stock">0</h2>
+                    </div>
+
+                </section>
+
+                <!-- Search & Add -->
+                <section class="toolbar">
+
+                    <input type="text" id="dashboard-search" placeholder="Search products..." class="search-box">
+
+                    <button class="add-product-btn" id="dashboard-add-btn">
+                        + Add Product
+                    </button>
+
+                </section>
+
+                <!-- Product Table -->
+                <section class="product-table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="product-list">
+
+                            <!-- Products will be added here using JavaScript -->
+
+                        </tbody>
+
+                    </table>
+
+                </section>
+            </section>
+
+
+            <!-- Product Page -->
+            <section id="products-page" style="display: none;">
+
+                <!-- Products Header -->
+                <header class="header">
+
+                    <div class="header-title">
+                        <h1>Products</h1>
+                        <p>Manage all your products</p>
+                    </div>
+
+                </header>
+
+                <!-- Products Toolbar -->
+                <section class="toolbar">
+
+                    <input type="text" id="products-search" placeholder="Search products..." class="search-box">
+
+                    <button class="add-product-btn" id="products-add-btn">
+                        + Add Product
+                    </button>
+
+                </section>
+
+                <!-- Product Cards -->
+                <div class="container-fluid">
+
+                    <div class="row g-4" id="products-container">
+
+                        <!-- Product cards will be created here -->
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Report Page -->
+            <section id="reports-page" style="display: none;">
+
+                <header class="header">
+
+                    <div class="header-title">
+                        <h1>Reports</h1>
+                        <p>View your store inventory reports</p>
+                    </div>
+
+                </header>
+
+                <section class="dashboard-cards">
+
+                    <div class="card">
+                        <h3>Total Products</h3>
+                        <h2 id="report-total-products">0</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>In Stock</h3>
+                        <h2 id="report-in-stock">0</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Out of Stock</h3>
+                        <h2 id="report-out-stock">0</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Inventory Value</h3>
+                        <h2 id="report-inventory-value">₹0</h2>
+                    </div>
+
+                </section>
+
+                <section class="product-table">
+
+                    <h2>Products by Category</h2>
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Products</th>
+                                <th>Total Quantity</th>
+                                <th>Inventory Value</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="report-category-list">
+                        </tbody>
+
+                    </table>
+
+                </section>
+
+            </section>
+
+
+            <!-- Settings Page -->
+            <section id="settings-page" style="display: none;">
+
+                <header class="header">
+
+                    <div class="header-title">
+                        <h1>Settings</h1>
+                        <p>Manage your store settings</p>
+                    </div>
+
+                </header>
+
+                <div class="settings-container">
+
+                    <div class="settings-card">
+
+                        <h3>Admin Profile</h3>
+
+                        <div class="form-group">
+                            <label>Admin Name</label>
+                            <input type="text" value="Admin">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="admin@example.com">
+                        </div>
+
+                        <button class="add-product-btn">
+                            Save Profile
+                        </button>
+
+                    </div>
+
+
+                    <div class="settings-card">
+
+                        <h3>Appearance</h3>
+
+                        <label>
+                            <input type="checkbox" id="dark-mode">
+                            Enable Dark Mode
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-card">
+
+                        <h3>Store Data</h3>
+
+                        <p>Delete all products and reset your store data.</p>
+
+                        <button id="reset-products" class="btn btn-danger">
+                            Reset Products
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+
+        
+        <!--  Popup -->
+        <div class="popup" id="product-popup">
+
+            <div class="popup-content">
+
+                <div class="popup-header">
+
+                    <h2>Add Product</h2>
+
+                    <button class="close-btn">X</button>
+
+                </div>
+
+                <form id="product-form">
+
+                    <div class="form-group">
+
+                        <label for="product-image">Product Image</label>
+
+                        <input type="file" id="product-image" accept="image/*">
+
+                        <img id="image-preview" src="" alt="Preview">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="product-name">Product Name</label>
+
+                        <input type="text" id="product-name" placeholder="Enter product name">
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="category">Category</label>
+
+                        <input type="text" id="category" placeholder="Enter category">
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="price">Price</label>
+
+                        <input type="number" id="price" placeholder="Enter price">
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="quantity">Quantity</label>
+
+                        <input type="number" id="quantity" placeholder="Enter quantity">
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="description">Description</label>
+
+                        <textarea id="description" rows="4" placeholder="Enter product description"></textarea>
+
+
+                    </div>
+
+                    <button type="submit" class="save-btn">
+                        Save Product
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
